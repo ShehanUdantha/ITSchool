@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "947238991420",
+    "project_id": "flutter-auth-85142",
+    "storage_bucket": "flutter-auth-85142.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947238991420:android:024590bbc5ec99851b7539",
+        "android_client_info": {
+          "package_name": "com.sltc.itschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947238991420-l7fgj4p0o9hso4o57ov9chjbdf70jmhk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl7BtLHqX-n9cNCpYDrPpOERBwIOdrJPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947238991420-l7fgj4p0o9hso4o57ov9chjbdf70jmhk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

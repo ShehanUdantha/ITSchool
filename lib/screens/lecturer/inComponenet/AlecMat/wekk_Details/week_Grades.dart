@@ -142,7 +142,7 @@ class _GradesScreenState extends State<GradesScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 20.0,
+                              height: 5.0,
                             ),
                           ],
                         ),
@@ -160,7 +160,7 @@ class _GradesScreenState extends State<GradesScreen> {
                       leading: IconButton(
                         icon: Icon(
                           Icons.delete,
-                          size: 30.0,
+                          size: 25.0,
                         ),
                         color: Colors.red,
                         onPressed: () {

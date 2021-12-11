@@ -262,13 +262,13 @@ class _NotesScreenState extends State<NotesScreen> {
                               doc[index]['sdName'],
                               style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     color: Color(0xff0b3140),
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
                             SizedBox(
-                              height: 20.0,
+                              height: 15.0,
                             ),
                           ],
                         ),
@@ -289,7 +289,7 @@ class _NotesScreenState extends State<NotesScreen> {
                         doc[index]['sdFile'],
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                            fontSize: 14,
+                            fontSize: 15,
                             color: Color(0xFF3C4046),
                           ),
                         ),
@@ -297,7 +297,7 @@ class _NotesScreenState extends State<NotesScreen> {
                       leading: IconButton(
                         icon: Icon(
                           Icons.delete,
-                          size: 30.0,
+                          size: 25.0,
                         ),
                         color: Colors.red,
                         onPressed: () {

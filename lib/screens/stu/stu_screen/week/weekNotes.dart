@@ -62,7 +62,7 @@ class _WeekNoteState extends State<WeekNote> {
                                 doc[index]['sdName'],
                                 style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       color: Color(0xff0b3140),
                                       fontWeight: FontWeight.bold),
                                 ),

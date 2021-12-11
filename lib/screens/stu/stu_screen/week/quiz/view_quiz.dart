@@ -146,7 +146,7 @@ class _QuizPlayState extends State<QuizPlay> {
                                 height: 20,
                               ),
                               Text(
-                                "$_correct/ $total",
+                                "$_correct / $total",
                                 style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
                                       fontSize: 25,
@@ -166,7 +166,7 @@ class _QuizPlayState extends State<QuizPlay> {
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: 18,
                                             color: Color(0xff0b3140),
                                             fontWeight: FontWeight.normal),
                                       ),

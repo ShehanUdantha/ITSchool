@@ -234,16 +234,16 @@ class _QuizMakerState extends State<QuizMaker> {
       borderRadius: BorderRadius.circular(30),
       color: Color(0xff0b3140),
       child: MaterialButton(
-          minWidth: 20.0,
+          minWidth: 120.0,
           padding: EdgeInsets.fromLTRB(17, 15, 17, 15),
           onPressed: () {
             uploadQuizData();
           },
           child: Text(
-            "Add Question",
+            "Add",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
           )),
     );
 
@@ -268,10 +268,10 @@ class _QuizMakerState extends State<QuizMaker> {
                         )));
           },
           child: Text(
-            "View Quiz",
+            "View",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
           )),
     );
 
@@ -303,15 +303,12 @@ class _QuizMakerState extends State<QuizMaker> {
                         SizedBox(height: 20),
                         OptionFourField,
                         SizedBox(height: 35),
-                        Column(
+                        Row(
                           children: [
-                            Row(
-                              children: [
-                                submitButton,
-                                SizedBox(width: 35.0),
-                                addButton,
-                              ],
-                            ),
+                            SizedBox(width: 28.0),
+                            submitButton,
+                            SizedBox(width: 25.0),
+                            addButton,
                           ],
                         ),
                         SizedBox(height: 10),

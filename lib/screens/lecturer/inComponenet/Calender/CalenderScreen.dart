@@ -225,7 +225,7 @@ class _CardViwerState extends State<CardViwer> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 3.0,
+                                  height: 4.0,
                                 ),
                                 Row(
                                   children: [
@@ -233,7 +233,7 @@ class _CardViwerState extends State<CardViwer> {
                                       'From: ',
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 17,
                                             color: Colors.grey,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -244,7 +244,7 @@ class _CardViwerState extends State<CardViwer> {
                                           doc[index]['from_time'],
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 17,
                                             color: Colors.grey,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -260,7 +260,7 @@ class _CardViwerState extends State<CardViwer> {
                                       'To: ',
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 17,
                                             color: Colors.grey,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -271,7 +271,7 @@ class _CardViwerState extends State<CardViwer> {
                                           doc[index]['to_time'],
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                            fontSize: 18,
+                                            fontSize: 17,
                                             color: Colors.grey,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -288,7 +288,7 @@ class _CardViwerState extends State<CardViwer> {
                                         : '',
                                     style: GoogleFonts.poppins(
                                       textStyle: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 15,
                                           color: Colors.blue,
                                           fontWeight: FontWeight.w500),
                                     ),

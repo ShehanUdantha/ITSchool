@@ -61,7 +61,7 @@ class _ChatRoomState extends State<ChatRoom> {
         child: Column(
           children: [
             Container(
-              height: size.height / 1.29,
+              height: size.height / 1.245,
               width: size.width,
               child: StreamBuilder<QuerySnapshot>(
                 stream: nRef.orderBy('time').snapshots(),
@@ -85,7 +85,7 @@ class _ChatRoomState extends State<ChatRoom> {
               ),
             ),
             Container(
-              height: size.height / 10,
+              height: size.height / 12.5,
               width: size.width,
               alignment: Alignment.center,
               child: Container(
@@ -109,7 +109,10 @@ class _ChatRoomState extends State<ChatRoom> {
                       ),
                     ),
                     IconButton(
-                        icon: Icon(Icons.send),
+                        icon: Icon(
+                          Icons.send,
+                          size: 25.0,
+                        ),
                         color: Color(0xff0b3140),
                         onPressed: onSendMessage),
                   ],
@@ -190,7 +193,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                       "Delete Message",
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 18,
                                           color: Color(0xFF3C4046),
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -199,7 +202,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                     SizedBox(height: 20),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
-                                          110, 0, 0, 0),
+                                          120, 0, 0, 0),
                                       child: Row(
                                         children: [
                                           InkWell(
@@ -207,9 +210,9 @@ class _ChatRoomState extends State<ChatRoom> {
                                               "Ok",
                                               style: GoogleFonts.poppins(
                                                 textStyle: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: 15,
                                                   color: Colors.grey,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.normal,
                                                 ),
                                               ),
                                             ),
@@ -227,9 +230,9 @@ class _ChatRoomState extends State<ChatRoom> {
                                               "Cancel",
                                               style: GoogleFonts.poppins(
                                                 textStyle: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: 15,
                                                   color: Colors.grey,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.normal,
                                                 ),
                                               ),
                                             ),

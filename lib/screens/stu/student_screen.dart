@@ -4,7 +4,7 @@ import 'package:itschool/logIn/login_screen.dart';
 import 'package:itschool/screens/stu/components/stHomeBody.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:itschool/screens/stu/sidebar/navigation_drawer_widget.dart';
-import 'package:itschool/screens/stu/stu_screen/Calender/CalenderScreen.dart';
+import 'package:itschool/screens/stu/stu_screen/CalenderScreen.dart';
 import 'package:itschool/screens/stu/stu_screen/news.dart';
 
 class StuHome extends StatefulWidget {
@@ -13,18 +13,6 @@ class StuHome extends StatefulWidget {
 }
 
 class _StuHomeState extends State<StuHome> {
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   FirebaseAuth.instance.authStateChanges().listen((firebaseuser) {
-  //     if (firebaseuser == null) {
-  //       Navigator.of(context)
-  //           .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
-  //     } else {}
-  //   });
-  // }
-
   int currentIndex = 0;
 
   final screens = [

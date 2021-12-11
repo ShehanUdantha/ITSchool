@@ -142,7 +142,6 @@ class _ProfileViewState extends State<ProfileView> {
               currentUser: loggedInUser,
             ),
           ),
-          SizedBox(height: 15),
           ButtonTheme(
             minWidth: 10.0,
             height: 25.0,

@@ -24,8 +24,6 @@ class _EditUScreenState extends State<EditUScreen> {
   final firstNameEditingController = new TextEditingController();
   final secondNameEditingController = new TextEditingController();
   final emailEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmPasswordEditingController = new TextEditingController();
   final indexNumberController = new TextEditingController();
   final roleController = new TextEditingController();
   final modulController = new TextEditingController();
@@ -126,71 +124,6 @@ class _EditUScreenState extends State<EditUScreen> {
                 ? IconButton(
                     onPressed: () {
                       emailEditingController.clear();
-                      setState(() {});
-                    },
-                    icon: Icon(Icons.cancel, color: Colors.grey))
-                : null));
-
-    //password field
-    final passwordField = TextFormField(
-        autofocus: false,
-        controller: passwordEditingController,
-        obscureText: true,
-        validator: (value) {
-          RegExp regex = new RegExp(r'^.{6,}$');
-          if (value!.isEmpty) {
-            return ("Password is required for login");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
-          }
-        },
-        onSaved: (value) {
-          firstNameEditingController.text = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-            prefixIcon: Icon(Icons.vpn_key),
-            contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "Password",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            suffixIcon: passwordEditingController.text.length > 0
-                ? IconButton(
-                    onPressed: () {
-                      passwordEditingController.clear();
-                      setState(() {});
-                    },
-                    icon: Icon(Icons.cancel, color: Colors.grey))
-                : null));
-    //confirm password field
-    final confirmPasswordField = TextFormField(
-        autofocus: false,
-        controller: confirmPasswordEditingController,
-        obscureText: true,
-        validator: (value) {
-          if (confirmPasswordEditingController.text !=
-              passwordEditingController.text) {
-            return "Password don't match";
-          }
-          return null;
-        },
-        onSaved: (value) {
-          confirmPasswordEditingController.text = value!;
-        },
-        textInputAction: TextInputAction.done,
-        decoration: InputDecoration(
-            prefixIcon: Icon(Icons.vpn_key),
-            contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "Confirm Password",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            suffixIcon: confirmPasswordEditingController.text.length > 0
-                ? IconButton(
-                    onPressed: () {
-                      confirmPasswordEditingController.clear();
                       setState(() {});
                     },
                     icon: Icon(Icons.cancel, color: Colors.grey))
@@ -394,19 +327,14 @@ class _EditUScreenState extends State<EditUScreen> {
                         onPressed: () {
                           firstNameEditingController.text =
                               doc[index]['firstName'];
-
                           secondNameEditingController.text =
                               doc[index]['lastName'];
                           modulController.text = doc[index]['module'];
-                          confirmPasswordEditingController.text =
-                              doc[index]['pw'];
                           batchController.text =
                               (doc[index]['batch']).toString();
                           indexNumberController.text = doc[index]['indexNo'];
                           roleController.text = doc[index]['role'];
-
                           emailEditingController.text = doc[index]['email'];
-                          passwordEditingController.text = doc[index]['pw'];
 
                           showDialog(
                               context: context,
@@ -436,10 +364,6 @@ class _EditUScreenState extends State<EditUScreen> {
                                             roleField,
                                             SizedBox(height: 10),
                                             batchField,
-                                            SizedBox(height: 10),
-                                            passwordField,
-                                            SizedBox(height: 10),
-                                            confirmPasswordField,
                                             SizedBox(height: 15),
                                             FlatButton(
                                               child: Padding(
@@ -468,9 +392,6 @@ class _EditUScreenState extends State<EditUScreen> {
                                                           .text,
                                                   "module":
                                                       modulController.text,
-                                                  "pw":
-                                                      confirmPasswordEditingController
-                                                          .text,
                                                   "batch": int.parse(
                                                       batchController.text),
                                                   "indexNo":

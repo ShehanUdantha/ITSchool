@@ -69,7 +69,7 @@ class _GradesScreenState extends State<GradesScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 20.0,
+                              height: 5.0,
                             ),
                           ],
                         ),

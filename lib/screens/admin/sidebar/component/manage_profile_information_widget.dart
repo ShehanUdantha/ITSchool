@@ -17,26 +17,7 @@ class _ManageProfileInformationWidgetState
     extends State<ManageProfileInformationWidget> {
   CollectionReference Preff = FirebaseFirestore.instance.collection('users');
 
-  var _passwordController = TextEditingController();
-  var _newPasswordController = TextEditingController();
-  var _repeatPasswordController = TextEditingController();
-
   var _formKey = GlobalKey<FormState>();
-
-  // bool checkCurrentPasswordValid = true;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _passwordController.dispose();
-    _newPasswordController.dispose();
-    _repeatPasswordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

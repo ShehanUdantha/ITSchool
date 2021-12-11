@@ -64,7 +64,7 @@ class _QuizTitleState extends State<QuizTitle> {
                         doc[index]['qName'],
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Color(0xff0b3140),
                               fontWeight: FontWeight.bold),
                         ),
@@ -73,7 +73,7 @@ class _QuizTitleState extends State<QuizTitle> {
                         'Deadline:  ' + doc[index]['deadline'],
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                               color: Colors.red,
                               fontWeight: FontWeight.normal),
                         ),
@@ -81,7 +81,7 @@ class _QuizTitleState extends State<QuizTitle> {
                       leading: IconButton(
                         icon: Icon(
                           Icons.remove_red_eye_rounded,
-                          size: 30.0,
+                          size: 25.0,
                         ),
                         color: Color(0xff00bfa5),
                         onPressed: () {

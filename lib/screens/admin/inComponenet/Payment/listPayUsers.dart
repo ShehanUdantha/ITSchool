@@ -57,7 +57,7 @@ class _LiUserScreenState extends State<LiUserScreen> {
                         doc[index]['pName'],
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Color(0xff0b3140),
                               fontWeight: FontWeight.bold),
                         ),

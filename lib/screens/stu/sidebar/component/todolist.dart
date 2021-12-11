@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:itschool/model/user_model.dart';
+import 'package:itschool/model/utils.dart';
 
 class todoScreen extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class todoScreen extends StatefulWidget {
 class _todoScreenState extends State<todoScreen> {
   // editing Controller
   final MsgEditingController = new TextEditingController();
+  late DateTime _fromDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +70,7 @@ class _todoScreenState extends State<todoScreen> {
               refhId.add({
                 "textMsg": MsgEditingController.text,
                 "Date": (DateTime.now().day).toString(),
+                "datTime": Utils.toDateTime(_fromDate),
               });
               MsgEditingController.clear();
               Fluttertoast.showToast(msg: "Added successfully!");
@@ -91,7 +94,7 @@ class _todoScreenState extends State<todoScreen> {
         ),
       ),
       body: StreamBuilder(
-        stream: refhId.snapshots(),
+        stream: refhId.orderBy('datTime').snapshots(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -125,7 +128,7 @@ class _todoScreenState extends State<todoScreen> {
                                 textStyle: TextStyle(
                                     fontSize: 18,
                                     color: Color(0xff0b3140),
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.normal),
                               ),
                             ),
                           ),

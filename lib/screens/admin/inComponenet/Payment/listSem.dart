@@ -100,7 +100,7 @@ class _LisScreenState extends State<LisScreen> {
             }
           },
           child: Text(
-            "Add Week",
+            "Add Semester",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),

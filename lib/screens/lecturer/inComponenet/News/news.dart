@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:itschool/screens/lecturer/inComponenet/News/post.dart';
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
@@ -80,18 +78,6 @@ class _NewsState extends State<News> {
                           SizedBox(
                             height: 2,
                           ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.delete,
-                              size: 30.0,
-                            ),
-                            color: Colors.red,
-                            onPressed: () {
-                              snapshot.data!.docs[index].reference.delete();
-                              Fluttertoast.showToast(
-                                  msg: "News deleted successfully!");
-                            },
-                          ),
                         ],
                       ),
                     ),
@@ -100,14 +86,6 @@ class _NewsState extends State<News> {
           } else
             return Text("");
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Add_Post()));
-        },
-        child: const Icon(Icons.add),
-        backgroundColor: Color(0xff0b3140),
       ),
     );
   }

@@ -134,6 +134,8 @@ class _AddEventPageState extends State<AddEventPage> {
                   controller: _description,
                   maxLines: 5,
                   decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10))),
                 ),
@@ -273,7 +275,7 @@ class _AddEventPageState extends State<AddEventPage> {
                             }
                           },
                           child: Text(
-                            "Save",
+                            "Add Event",
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 fontSize: 20,

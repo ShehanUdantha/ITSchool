@@ -167,7 +167,7 @@ class _SettingState extends State<Setting> {
                                       "Password Reset",
                                       style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
-                                          fontSize: 25,
+                                          fontSize: 22,
                                           color: Color(0xFF3C4046),
                                           fontWeight: FontWeight.bold,
                                         ),

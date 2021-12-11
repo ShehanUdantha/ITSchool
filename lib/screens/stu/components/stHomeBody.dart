@@ -32,7 +32,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     // It will provie us total height  and width of our screen
     Size size = MediaQuery.of(context).size;
-    // it enable scrolling on small device
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,9 +41,6 @@ class _BodyState extends State<Body> {
           TopicSection(TopicName: "My Courses"),
           SizedBox(height: 10),
           ModuleCard(size: size, loggedInUser: loggedInUser),
-          //SizedBox(height: 10),
-          //TopicSection(TopicName: "Recently Accessed Courses"),
-          //Recently(),
           SizedBox(height: 10),
         ],
       ),

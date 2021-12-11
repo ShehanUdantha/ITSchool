@@ -12,10 +12,6 @@ import 'package:itschool/screens/stu/sidebar/component/todolist.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
-  // NavigationDrawerWidget({required this.loggedInUser});
-
-  // final UserModel loggedInUser;
-
   @override
   State<NavigationDrawerWidget> createState() => _NavigationDrawerWidgetState();
 }
@@ -44,6 +40,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
     final name = '${loggedInUser.firstName}' + ' ${loggedInUser.lastName}';
     final email = '${loggedInUser.email}';
     final urlImage = '${loggedInUser.img}';
+    Size size = MediaQuery.of(context).size;
 
     return Drawer(
       child: Material(
@@ -55,6 +52,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
               urlImage: urlImage,
               name: name,
               email: email,
+              size: size,
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 5),
@@ -97,12 +95,16 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                     icon: Icons.announcement_rounded,
                     onClicked: () => selectedItem(context, 6),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 45),
                   Center(
                       child: Text(
                     'Version: 1.0',
-                    style: TextStyle(
-                      color: Color(0xff0b3140),
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF3C4046),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   )),
                 ],
@@ -118,22 +120,26 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
     required String urlImage,
     required String name,
     required String email,
+    required Size size,
   }) =>
       Container(
-          padding: padding.add(EdgeInsets.symmetric(vertical: 59.5)),
-          height: 190,
+          height: size.height * 0.275,
           child: Row(
             children: [
-              CircleAvatar(
-                  radius: 35,
-                  backgroundImage: NetworkImage(
-                    (urlImage.isEmpty)
-                        ? 'https://cdn-icons-png.flaticon.com/512/149/149071.png' //Default Picture
-                        : urlImage,
-                  )),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: CircleAvatar(
+                    radius: 35,
+                    backgroundImage: NetworkImage(
+                      (urlImage.isEmpty)
+                          ? 'https://cdn-icons-png.flaticon.com/512/149/149071.png' //Default Picture
+                          : urlImage,
+                    )),
+              ),
               SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     name,
@@ -254,13 +260,13 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                             "Sri Lanka Technological Campus (SLTC)",
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 color: Color(0xff0b3140),
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 16),
                           Text(
                             "Stay in touch",
                             style: GoogleFonts.poppins(
@@ -282,7 +288,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                                   children: [
                                     Icon(
                                       Icons.web,
-                                      size: 20.0,
+                                      size: 22.0,
                                     ),
                                     SizedBox(
                                       width: 20,
@@ -311,7 +317,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                                   children: [
                                     Icon(
                                       Icons.phone_android,
-                                      size: 20.0,
+                                      size: 22.0,
                                     ),
                                     SizedBox(
                                       width: 20,
@@ -340,7 +346,7 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                                   children: [
                                     Icon(
                                       Icons.email,
-                                      size: 20.0,
+                                      size: 22.0,
                                     ),
                                     SizedBox(
                                       width: 20,
@@ -360,40 +366,10 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
-                          Column(
-                            children: [
-                              Container(
-                                width: 150.0,
-                                child: FlatButton(
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                                    child: Text(
-                                      'Ok',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  color: Color(0xff0b3140),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  shape: new RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                           SizedBox(height: 15),
                           Center(
                             child: Text(
-                              "Falcon's",
+                              "©2021 Falcon's",
                               style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   fontSize: 12,

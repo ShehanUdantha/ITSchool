@@ -140,7 +140,7 @@ class _HelpScreenState extends State<HelpScreen> {
                         doc[index]['hName'],
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
-                              fontSize: 20,
+                              fontSize: 19,
                               color: Color(0xff0b3140),
                               fontWeight: FontWeight.bold),
                         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:itschool/chat/chat_Divider.dart';
 import 'package:itschool/logIn/login_screen.dart';
 import 'package:itschool/screens/lecturer/components/lecHomeBody.dart';
+import 'package:itschool/screens/lecturer/inComponenet/Chat/lecChat_Divider.dart';
 import 'package:itschool/screens/lecturer/sidebar/navigation_drawer_widget.dart';
 
 class LecHome extends StatefulWidget {

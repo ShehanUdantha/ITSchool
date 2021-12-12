@@ -85,10 +85,6 @@ class _SettingState extends State<Setting> {
               thickness: 2,
             ),
             SizedBox(
-              height: 10,
-            ),
-            //buildNotificationOptionRow("Account activity", true),
-            SizedBox(
               height: 50,
             ),
           ],
@@ -96,27 +92,6 @@ class _SettingState extends State<Setting> {
       ),
     );
   }
-
-  // Row buildNotificationOptionRow(String title, bool isActive) {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //     children: [
-  //       Text(
-  //         title,
-  //         style: TextStyle(
-  //             fontSize: 18,
-  //             fontWeight: FontWeight.w500,
-  //             color: Colors.grey[600]),
-  //       ),
-  //       Transform.scale(
-  //           scale: 0.7,
-  //           child: CupertinoSwitch(
-  //             value: isActive,
-  //             onChanged: (bool val) {},
-  //           ))
-  //     ],
-  //   );
-  // }
 
   GestureDetector buildAccountOptionRow(BuildContext context, String title) {
     return GestureDetector(

@@ -47,7 +47,7 @@ class _AttendenceDivScreenState extends State<AttendenceDivScreen> {
         title: Text(widget.mIndex),
       ),
       body: StreamBuilder(
-        stream: attef.snapshots(),
+        stream: attef.orderBy('datetime').snapshots(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -84,7 +84,8 @@ class _AttendenceDivScreenState extends State<AttendenceDivScreen> {
                           attef
                               .doc(doc[index]['date'])
                               .collection('Marks')
-                              .add({
+                              .doc(widget.loggedInUser.uid)
+                              .set({
                             'userIndex': widget.loggedInUser.indexNo,
                             'userId': widget.loggedInUser.uid,
                             'timestamp': Utils.toDateTime(_fromDate),

@@ -68,14 +68,14 @@ class _QuizMakerState extends State<QuizMaker> {
           setState(() {
             isLoading = false;
           });
+
+          Fluttertoast.showToast(msg: "Question added successfully!");
         }).catchError((e) {
           print(e);
         });
       } else {
         print("error is happening ");
       }
-
-      Fluttertoast.showToast(msg: "Question added successfully!");
     }
 
     //question feild

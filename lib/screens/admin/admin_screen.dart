@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:itschool/chat/chat_Divider.dart';
 import 'package:itschool/model/user_model.dart';
 import 'package:itschool/screens/admin/components/adHomeBody.dart';
 import 'package:itschool/logIn/login_screen.dart';
+import 'package:itschool/screens/admin/inComponenet/Chat/adminChat_Divider.dart';
 import 'package:itschool/screens/admin/sidebar/navigation_drawer_widget.dart';
 
 class AdminHome extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itschool/chat/chat_Divider.dart';
+import 'package:itschool/screens/stu/stu_screen/chat_Divider.dart';
 import 'package:itschool/logIn/login_screen.dart';
 import 'package:itschool/screens/stu/components/stHomeBody.dart';
 import 'package:flutter_svg/svg.dart';

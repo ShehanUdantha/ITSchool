@@ -421,6 +421,7 @@ class _AddUScreenState extends State<AddUScreen> {
             .catchError((e) {
           Fluttertoast.showToast(msg: e!.message);
         });
+        Fluttertoast.showToast(msg: "User added successfully!");
 
         firstNameEditingController.clear();
         secondNameEditingController.clear();
@@ -486,7 +487,6 @@ class _AddUScreenState extends State<AddUScreen> {
         .doc(user2.uid)
         .set(userModel.toMap())
         .whenComplete(() => Navigator.pop(context));
-    Fluttertoast.showToast(msg: "User added successfully!");
   }
 
   void AdminSignIn(String email, String password) async {

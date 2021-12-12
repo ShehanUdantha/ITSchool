@@ -45,7 +45,7 @@ class _AttendenceDivScreenState extends State<AttendenceDivScreen> {
         title: Text(widget.mIndex),
       ),
       body: StreamBuilder(
-        stream: attef.snapshots(),
+        stream: attef.orderBy('datetime').snapshots(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -109,6 +109,7 @@ class _AttendenceDivScreenState extends State<AttendenceDivScreen> {
 
           reference.set({
             'date': Utils.toDate(_fromDate),
+            'datetime': Utils.toDateTime(_fromDate),
           });
         },
         child: const Icon(Icons.add),

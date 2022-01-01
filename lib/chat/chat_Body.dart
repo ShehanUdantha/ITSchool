@@ -33,7 +33,6 @@ class _ChatRoomState extends State<ChatRoom> {
         "sendBy": widget.loggedInUser.firstName,
         'id': widget.loggedInUser.indexNo,
         "message": _message.text,
-        "type": "text",
         "time": FieldValue.serverTimestamp(),
       };
 
@@ -50,7 +49,6 @@ class _ChatRoomState extends State<ChatRoom> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -59,203 +57,214 @@ class _ChatRoomState extends State<ChatRoom> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               height: size.height / 1.245,
               width: size.width,
-              child: StreamBuilder<QuerySnapshot>(
-                stream: nRef.orderBy('time').snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, index) {
-                        Map<String, dynamic> chatMap =
-                            snapshot.data!.docs[index].data()
-                                as Map<String, dynamic>;
-
-                        return messageTile(
-                            chatMap, size, context, snapshot, index);
-                      },
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
+              child: SingleChildScrollView(
+                physics: ScrollPhysics(),
+                reverse: true,
+                child: ShowMessages(
+                  Ref: nRef,
+                  loggedInUser: widget.loggedInUser,
+                ),
               ),
             ),
-            Container(
-              height: size.height / 12.5,
-              width: size.width,
-              alignment: Alignment.center,
-              child: Container(
-                height: size.height / 12,
-                width: size.width / 1.1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: size.height / 17,
-                      width: size.width / 1.29,
-                      child: Scrollbar(
-                        child: TextField(
-                          controller: _message,
-                          decoration: InputDecoration(
-                              hintText: "Send Message",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              )),
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: size.height / 17,
+                    width: size.width / 1.29,
+                    child: Scrollbar(
+                      child: TextField(
+                        controller: _message,
+                        decoration: InputDecoration(
+                          hintText: "Enter Message",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                       ),
                     ),
-                    IconButton(
-                        icon: Icon(
-                          Icons.send,
-                          size: 25.0,
-                        ),
-                        color: Color(0xff0b3140),
-                        onPressed: onSendMessage),
-                  ],
+                  ),
                 ),
-              ),
+                IconButton(
+                    onPressed: () {
+                      onSendMessage();
+                    },
+                    icon: Icon(
+                      Icons.send,
+                      color: Color(0xff0b3140),
+                      size: 25.0,
+                    )),
+              ],
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Builder messageTile(
-      Map<String, dynamic> chatMap,
-      Size size,
-      BuildContext context,
-      AsyncSnapshot<QuerySnapshot<Object?>> snapshot,
-      int index) {
+class ShowMessages extends StatelessWidget {
+  ShowMessages({required this.Ref, required this.loggedInUser});
+
+  final CollectionReference Ref;
+  final UserModel loggedInUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Ref.orderBy('time').snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            shrinkWrap: true,
+            primary: true,
+            physics: ScrollPhysics(),
+            itemBuilder: (context, index) {
+              Map<String, dynamic> chatMap =
+                  snapshot.data!.docs[index].data() as Map<String, dynamic>;
+
+              return messageTile(chatMap, context, snapshot, index);
+            },
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
+  Builder messageTile(Map<String, dynamic> chatMap, BuildContext context,
+      AsyncSnapshot<QuerySnapshot<Object?>> snapshot, int index) {
     return Builder(builder: (_) {
-      if (chatMap['type'] == "text") {
-        return Container(
-          width: size.width,
-          alignment: chatMap['sendBy'] == widget.loggedInUser.firstName
-              ? Alignment.centerRight
-              : Alignment.centerLeft,
-          child: InkWell(
-            child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: chatMap['sendBy'] == widget.loggedInUser.firstName
-                      ? Color(0xff00bfa5)
-                      : Color(0xff12526c),
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      chatMap['sendBy'] + '  ' + chatMap['id'],
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
+      final Size size = MediaQuery.of(context).size;
+      return Container(
+        width: size.width,
+        alignment: chatMap['sendBy'] == loggedInUser.firstName
+            ? Alignment.centerRight
+            : Alignment.centerLeft,
+        child: InkWell(
+          child: Container(
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 14),
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: chatMap['sendBy'] == loggedInUser.firstName
+                    ? Color(0xff00bfa5)
+                    : Color(0xff12526c),
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    chatMap['sendBy'] + '  ' + chatMap['id'],
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
                     ),
-                    SizedBox(
-                      height: size.height / 250,
+                  ),
+                  SizedBox(
+                    height: size.height / 250,
+                  ),
+                  Text(
+                    chatMap['message'],
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
                     ),
-                    Text(
-                      chatMap['message'],
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                )),
-            onTap: () {
-              chatMap['sendBy'] == widget.loggedInUser.firstName
-                  ? showDialog(
-                      context: context,
-                      builder: (context) => Dialog(
-                            child: Container(
-                              width: 100.0,
-                              decoration: new BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: const Color(0xFFFFFF),
-                                borderRadius: new BorderRadius.all(
-                                    new Radius.circular(30.0)),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  children: <Widget>[
-                                    Text(
-                                      "Delete Message",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 18,
-                                          color: Color(0xFF3C4046),
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                  ),
+                ],
+              )),
+          onTap: () {
+            chatMap['sendBy'] == loggedInUser.firstName
+                ? showDialog(
+                    context: context,
+                    builder: (context) => Dialog(
+                          child: Container(
+                            width: 100.0,
+                            decoration: new BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: const Color(0xFFFFFF),
+                              borderRadius: new BorderRadius.all(
+                                  new Radius.circular(30.0)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView(
+                                shrinkWrap: true,
+                                children: <Widget>[
+                                  Text(
+                                    "Delete Message",
+                                    style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                        fontSize: 18,
+                                        color: Color(0xFF3C4046),
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(height: 20),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          120, 0, 0, 0),
-                                      child: Row(
-                                        children: [
-                                          InkWell(
-                                            child: Text(
-                                              "Ok",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(120, 0, 0, 0),
+                                    child: Row(
+                                      children: [
+                                        InkWell(
+                                          child: Text(
+                                            "Ok",
+                                            style: GoogleFonts.poppins(
+                                              textStyle: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.normal,
                                               ),
                                             ),
-                                            onTap: () {
-                                              snapshot
-                                                  .data!.docs[index].reference
-                                                  .delete();
+                                          ),
+                                          onTap: () {
+                                            snapshot.data!.docs[index].reference
+                                                .delete();
 
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                          SizedBox(width: 50),
-                                          InkWell(
-                                            child: Text(
-                                              "Cancel",
-                                              style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                  fontSize: 15,
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                        SizedBox(width: 50),
+                                        InkWell(
+                                          child: Text(
+                                            "Cancel",
+                                            style: GoogleFonts.poppins(
+                                              textStyle: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.normal,
                                               ),
                                             ),
-                                            onTap: () {
-                                              Navigator.pop(context);
-                                            },
                                           ),
-                                        ],
-                                      ),
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(height: 5),
-                                  ],
-                                ),
+                                  ),
+                                  SizedBox(height: 5),
+                                ],
                               ),
                             ),
-                          ))
-                  : null;
-            },
-          ),
-        );
-      } else {
-        return SizedBox();
-      }
+                          ),
+                        ))
+                : null;
+          },
+        ),
+      );
     });
   }
 }

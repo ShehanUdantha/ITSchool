@@ -34,7 +34,6 @@ class _RootState extends State<Root> {
           this.loggedInUser = UserModel.fromMap(uid.data());
 
           if (loggedInUser.role == "admin") {
-            Fluttertoast.showToast(msg: "Login Successful!");
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => AdminHome()));
           } else if (loggedInUser.role == "student") {

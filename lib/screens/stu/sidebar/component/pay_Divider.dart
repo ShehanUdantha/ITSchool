@@ -32,7 +32,7 @@ class _LiSemScreenState extends State<LiSemScreen> {
         ),
       ),
       body: StreamBuilder(
-        stream: SemRef.snapshots(),
+        stream: SemRef.orderBy('time').snapshots(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

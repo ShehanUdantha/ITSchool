@@ -75,16 +75,19 @@ class _ChatRoomState extends State<ChatRoom> {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    height: size.height / 17,
-                    width: size.width / 1.29,
-                    child: Scrollbar(
-                      child: TextField(
-                        controller: _message,
-                        decoration: InputDecoration(
-                          hintText: "Enter Message",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 0, 5.0, 0),
+                    child: Container(
+                      height: size.height / 17,
+                      width: size.width / 1.29,
+                      child: Scrollbar(
+                        child: TextField(
+                          controller: _message,
+                          decoration: InputDecoration(
+                            hintText: "Message",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
                         ),
                       ),

@@ -109,7 +109,7 @@ class _AttendenceDivScreenState extends State<AttendenceDivScreen> {
 
           reference.set({
             'date': Utils.toDate(_fromDate),
-            'datetime': Utils.toDateTime(_fromDate),
+            'datetime': DateTime.now(),
           });
         },
         child: const Icon(Icons.add),

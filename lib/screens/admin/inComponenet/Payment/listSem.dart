@@ -93,6 +93,7 @@ class _LisScreenState extends State<LisScreen> {
               reference.set({
                 "semName": SNameEditingController.text,
                 "semId": docsId,
+                "time": FieldValue.serverTimestamp(),
               });
               SNameEditingController.clear();
               Fluttertoast.showToast(msg: "Semester added successfully!");
@@ -116,7 +117,7 @@ class _LisScreenState extends State<LisScreen> {
         ),
       ),
       body: StreamBuilder(
-        stream: SemRef.snapshots(),
+        stream: SemRef.orderBy('time').snapshots(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -148,6 +149,17 @@ class _LisScreenState extends State<LisScreen> {
                                         semId: doc[index]['semId'],
                                         dbtitle: widget.dbtitle,
                                       )));
+                        },
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.delete,
+                          size: 20.0,
+                        ),
+                        color: Colors.red,
+                        onPressed: () {
+                          snapshot.data!.docs[index].reference.delete();
+                          Fluttertoast.showToast(msg: "Deleted successfully!");
                         },
                       ),
                     ),

@@ -69,8 +69,10 @@ class _todoScreenState extends State<todoScreen> {
             } else {
               refhId.add({
                 "textMsg": MsgEditingController.text,
-                "Date": (DateTime.now().day).toString(),
-                "datTime": Utils.toDateTime(_fromDate),
+                "Date": (DateTime.now().month).toString() +
+                    "/" +
+                    (DateTime.now().day).toString(),
+                "time": FieldValue.serverTimestamp(),
               });
               MsgEditingController.clear();
               Fluttertoast.showToast(msg: "Added successfully!");
@@ -94,7 +96,7 @@ class _todoScreenState extends State<todoScreen> {
         ),
       ),
       body: StreamBuilder(
-        stream: refhId.orderBy('datTime').snapshots(),
+        stream: refhId.orderBy('time').snapshots(),
         builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

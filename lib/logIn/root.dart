@@ -37,11 +37,9 @@ class _RootState extends State<Root> {
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => AdminHome()));
           } else if (loggedInUser.role == "student") {
-            Fluttertoast.showToast(msg: "Login Successful!");
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => StuHome()));
           } else if (loggedInUser.role == 'lecturer') {
-            Fluttertoast.showToast(msg: "Login Successful!");
             Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => LecHome()));
           }
